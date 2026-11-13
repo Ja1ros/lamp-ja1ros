@@ -29,7 +29,9 @@ BIN=mysql; command -v mariadb >/dev/null 2>&1 && BIN=mariadb
 COLL=""
 case "$("$BIN" --version 2>/dev/null)" in *MariaDB*) COLL=utf8mb4_uca1400_ai_ci ;; esac
 
-# init scripts connect as root over the local socket (no password needed here)
+# Authenticate against the temporary server through its local socket.
+MYSQL_PWD="${MYSQL_ROOT_PASSWORD:-${MARIADB_ROOT_PASSWORD:-}}"
+export MYSQL_PWD
 found=0
 for f in $(find "$SQL_DIR" -type f -name '*.sql' | sort); do
   found=1
