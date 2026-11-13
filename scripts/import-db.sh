@@ -29,7 +29,7 @@ here="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$here"
 
 # --- defaults ---------------------------------------------------------------
-PROJECT="${COMPOSE_PROJECT_NAME:-$(basename "$here")}"
+PROJECT="${COMPOSE_PROJECT_NAME:-lamp-ja1ros}"
 DB_SERVICE="db"
 WEB_SERVICE="www"
 DUMP=""
